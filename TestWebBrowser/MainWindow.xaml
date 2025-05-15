@@ -3,10 +3,95 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         xmlns:local="clr-namespace:TestWebBrowser"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <WebBrowser x:Name="MyWebBrowser">
 
-    </WebBrowser>
+    <TabControl>
+        <TabItem Header="WebBrowser">
+            <DockPanel>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                             DockPanel.Dock="Top"
+                             x:Name="WebBrowserUrl"
+                             FontSize="18"
+                             KeyDown="WebBrowserUrl_KeyDown">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <VisualBrush Stretch="None">
+                                                    <VisualBrush.Visual>
+                                                        <TextBlock Text="Введите URL..." 
+                                               Foreground="Gray"
+                                               Margin="5,0,0,0"/>
+                                                    </VisualBrush.Visual>
+                                                </VisualBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <Button Grid.Column="1"
+                            DockPanel.Dock="Top"
+                            x:Name="WebBrowserReset"
+                            Width="60"
+                            Margin="8, 0"
+                            Click="WebBrowserReset_Click">Reset</Button>
+                </Grid>
+                <WebBrowser x:Name="MyWebBrowser"/>
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="WebView2">
+            <DockPanel>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                             DockPanel.Dock="Top"
+                             x:Name="WebView2Url"
+                             FontSize="18"
+                             KeyDown="WebView2Url_KeyDown">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <VisualBrush Stretch="None">
+                                                    <VisualBrush.Visual>
+                                                        <TextBlock Text="Введите URL..." 
+                                               Foreground="Gray"
+                                               Margin="5,0,0,0"/>
+                                                    </VisualBrush.Visual>
+                                                </VisualBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <Button Grid.Column="1"
+                            DockPanel.Dock="Top"
+                            x:Name="WebView2Reset"
+                            Width="60"
+                            Margin="8, 0"
+                            Click="WebView2Reset_Click">Reset</Button>
+                </Grid>
+                <wv2:WebView2 x:Name="MyWebView2"/>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
 </Window>

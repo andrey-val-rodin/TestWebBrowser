@@ -13,6 +13,6 @@
 
 <script>
     function test() {
-        window.external.Notify("Hello from JavaScript!");
+        window.chrome.webview.postMessage('Hello from JS!');
     }
 </script>
